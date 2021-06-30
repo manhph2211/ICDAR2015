@@ -9,11 +9,13 @@ ICDAR2015 :smile:
 git clone https://github.com/manhph2211/ICDAR-2015.git 
 cd ICDAR-2015
 ```
+
+# Datasets
+
+- This implement uses datasets from ICDAR-2015 competiton. You can download data from the [offical website](https://rrc.cvc.uab.es/?ch=4&com=downloads) (in the task 4.1 & 4.3). All zip files should be unzipped at `/data` 
+
 # Text Localization
 
-## Datasets
-
-- This implement uses datasets from ICDAR-2015 competiton. You can download data from the [offical website](https://rrc.cvc.uab.es/?ch=4&com=downloads) (in the task 4.1). All zip files should be unzipped at `/ICDAR-2015` 
 
 ## Training
 

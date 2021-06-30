@@ -13,18 +13,36 @@ mkdir checkpoints
 cd ..
 
 #-----------------------------------------------------------------------------
-cd data
-# For images
+
+cd data/detection
+
+## For images
 mv ../ch4_training_images imgs/train
 mv ../ch4_test_images imgs/test
-# For annotations
+## For annotations
 mv ../ch4_training_localization_transcription_gt annotations/train
 mv ../Challenge4_Test_Task1_GT annotations/test
 
+wget https://download.openmmlab.com/mmocr/data/icdar2015/instances_training.json
+wget https://download.openmmlab.com/mmocr/data/icdar2015/instances_test.json
+wget -P ../../mmocr/checkpoints https://download.openmmlab.com/mmocr/textdet/dbnet/dbnet_r18_fpnc_sbn_1200e_icdar2015_20210329-ba3ab597.pth
+
+cd ../../
+
 #-----------------------------------------------------------------------------
+
+
+cd data/recognition
+
+## For images
+mv ../ch4_training_images imgs/train
+mv ../ch4_test_images imgs/test
+## For annotations
+mv ../ch4_training_localization_transcription_gt annotations/train
+mv ../Challenge4_Test_Task1_GT annotations/test
 
 wget https://download.openmmlab.com/mmocr/data/icdar2015/instances_training.json
 wget https://download.openmmlab.com/mmocr/data/icdar2015/instances_test.json
-wget -P ../mmocr/checkpoints https://download.openmmlab.com/mmocr/textdet/dbnet/dbnet_r18_fpnc_sbn_1200e_icdar2015_20210329-ba3ab597.pth
+wget -P ../../mmocr/checkpoints https://download.openmmlab.com/mmocr/textdet/dbnet/dbnet_r18_fpnc_sbn_1200e_icdar2015_20210329-ba3ab597.pth
 
-cd ..
+cd ../../
