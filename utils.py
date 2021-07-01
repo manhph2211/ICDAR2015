@@ -3,6 +3,7 @@ import numpy as np
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import cv2
 import json
+from config import *
 
 
 class DataProcess:
@@ -20,11 +21,11 @@ class DataProcess:
 				if char not in self.char_list:
 					self.char_list += char
 		self.char_list = ''.join(sorted(self.char_list))
-		self.c2i = {c:i for i,c in enumerate(self.char_list)}
-		self.i2c = {i:c for i,c in enumerate(self.char_list)}
+		self.c2i = {c:i for i,c in enumerate(char_list)}
+		self.i2c = {i:c for i,c in enumerate(char_list)}
 		self.class_num = len(self.c2i) + 1
 		encoded_label = [self.encode(text) for text in self.txts]
-		self.padded_txt = pad_sequences(encoded_label, maxlen=self.max_len, padding='post', value = len(self.char_list))
+		self.padded_txt = pad_sequences(encoded_label, maxlen=max_text_len, padding='post', value = len(char_list))
 
 
 	def encode(self,txt):
@@ -68,30 +69,25 @@ def write_json(file,data):
 		json.dump(data,f,indent = 4)
 
 
-def remove_dup(list_idx):
-  text=[0]
-  list_idx=list_idx[0]
-  for i in range(len(list_idx)-1):
-    if list_idx[i]== text[-1] :
-        continue
-    text.append(list_idx[i])
-  return text
-
-
-def decode(list_idx,vocab):
-  text=remove_dup(list_idx)
-  text=[x for x in text if x !=0]
-  text=[vocab[idx-1] for idx in text]
-  return ''.join(text)
-
-
 if __name__ == '__main__':
 	test_label_file = 'data/recognition/test_label.txt'
 	train_label_file = 'data/recognition/train_label.txt'
-	adu =DataProcess(train_label_file,28,120)
-	adu.get_data()
-	adu.pad()
-	adu.preprocess_img()
-	print(adu.char_list)
-	print(adu.class_num)
-	print(adu.max_len)
+	train_data =DataProcess(train_label_file,120,28)
+	train_data.get_data()
+	train_data.pad()
+	train_data.preprocess_img()
+	print(train_data.char_list)
+	print(train_data.class_num)
+	print(train_data.max_len)
+	print(train_data.i2c)
+	print(train_data.c2i)
+	print("--------------------------------")
+	test_data =DataProcess(test_label_file,120,28)
+	test_data.get_data()
+	test_data.pad()
+	test_data.preprocess_img()
+	print(test_data.char_list)
+	print(test_data.class_num)
+	print(test_data.max_len)
+	print(test_data.i2c)
+	print(train_data.c2i)

@@ -20,12 +20,12 @@ except:
 train_G = Generator(train_label_file, img_w, img_h, batch_size, downsample_factor)
 val_G = Generator(test_label_file, img_w, img_h, batch_size, downsample_factor)
 
-ada = Adadelta()
+optimizer = Adadelta(learning_rate=0.001)
 
 early_stop = EarlyStopping(monitor='loss', min_delta=0.001, patience=4, mode='min', verbose=1)
 checkpoint = ModelCheckpoint(filepath='model.hdf5', monitor='loss', verbose=1, mode='min', period=1)
 
-model.compile(loss={'ctc': lambda y_true, y_pred: y_pred}, optimizer=ada)
+model.compile(loss={'ctc': lambda y_true, y_pred: y_pred}, optimizer=optimizer)
 
 model.fit_generator(generator=train_G.next_batch(),
                     steps_per_epoch=int(train_G.n / batch_size),

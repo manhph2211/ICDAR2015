@@ -1,11 +1,12 @@
 from utils import DataProcess
 import numpy as np
 import random
+from config import *
 
 
 class Generator:
-    def __init__(self, label_file, img_w, img_h,
-                 batch_size, downsample_factor):
+    
+    def __init__(self, label_file):
         self.process = DataProcess(label_file,img_w, img_h)
         self.process.get_data()
         self.process.pad()
@@ -13,14 +14,15 @@ class Generator:
         self.img_h = img_h
         self.img_w = img_w
         self.batch_size = batch_size
-        self.class_num = self.process.class_num
-        self.max_len = self.process.max_len
+        self.class_num = num_classes
+        self.max_len = max_text_len
         self.downsample_factor = downsample_factor
         self.n = len(self.process.img_paths)                      # number of images
         self.indexes = list(range(self.n))
         self.cur_index = 0
         self.texts = self.process.padded_txt
         self.imgs = self.process.imgs
+
 
     def next_sample(self):     
         self.cur_index += 1
@@ -57,7 +59,7 @@ class Generator:
 
 
 if __name__ == '__main__':
-    gen = Generator('data/recognition/train_label.txt',32,128,4,4)
+    gen = Generator('data/recognition/train_label.txt')
     inputs,o = gen.next_batch()
     x,y,in_len,out_len = list(inputs.values())
     print(x.shape)
