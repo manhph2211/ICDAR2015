@@ -17,8 +17,8 @@ except:
     print("...New weight data...")
     pass
 
-train_G = Generator(train_label_file, img_w, img_h, batch_size, downsample_factor)
-val_G = Generator(test_label_file, img_w, img_h, batch_size, downsample_factor)
+train_G = Generator(train_label_file)
+val_G = Generator(test_label_file)
 
 optimizer = Adadelta(learning_rate=0.001)
 
