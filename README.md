@@ -36,7 +36,7 @@ python3 ./tools/train.py ../recognizer.py
 
 ```
 
-- With simple CRNN(Keras), just run `p`
+- With simple CRNN(Keras), just run `python3 train.py`
  
 
 
