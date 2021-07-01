@@ -17,7 +17,7 @@ bash bash.sh
 
 # Text Localization
 
-## Training
+## Training (db-mmocr)
 
 ```
 cd mmocr
@@ -29,11 +29,15 @@ python3 ./tools/train.py ../detector.py
 
 ## Training
 
+- With crnn-mmocr:
 ```
 cd mmocr
 python3 ./tools/train.py ../recognizer.py
 
 ```
+
+- With simple CRNN(Keras), just run `p`
+ 
 
 
 
