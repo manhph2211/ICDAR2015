@@ -1,7 +1,7 @@
 ICDAR2015 :smile:
 =====
 
-- This repo is about to implement diffrent kinds of modern toolkits to detect and recognize texts in image. In the repo so far, I used DB and CRNN that are implemented in mmocr and also, I tried a simple CRNN model written in Keras f, which is much depended on [this](https://github.com/qjadud1994/CRNN-Keras) 
+- This repo is about to implement diffrent kinds of modern toolkits to detect and recognize texts in image. In the repo so far, I used DB and CRNN  (implemented in mmocr) and also, I tried a simple CRNN model written in Keras for recognizing text, which is much depended on [this](https://github.com/qjadud1994/CRNN-Keras) 
 
 - Let's start with:
 
