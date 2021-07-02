@@ -41,6 +41,5 @@ mv ../ch4_test_word_images_gt .
 
 wget https://download.openmmlab.com/mmocr/data/mixture/icdar_2015/train_label.txt
 wget https://download.openmmlab.com/mmocr/data/mixture/icdar_2015/test_label.txt
-wget -P ../../mmocr/checkpoints https://download.openmmlab.com/mmocr/textdet/dbnet/dbnet_r18_fpnc_sbn_1200e_icdar2015_20210329-ba3ab597.pth
-
+wget -P ../../mmocr/checkpoints https://download.openmmlab.com/mmocr/textrecog/tps/crnn_tps_academic_dataset_20210510-d221a905.pth
 cd ../../
